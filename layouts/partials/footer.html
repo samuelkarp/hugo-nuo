@@ -49,7 +49,7 @@
 
 <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('{{ $serviceWorker.RelPermalink }}').then(function() {
+    navigator.serviceWorker.register('{{ $serviceWorker.Permalink }}').then(function() {
       console.log('[ServiceWorker] Registered');
     });
   }
