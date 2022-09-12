@@ -55,11 +55,6 @@
   }
 </script>
 
-<!-- Google Analytics -->
-{{ if .Site.GoogleAnalytics }}
-{{ template "_internal/google_analytics_async.html" . }}
-{{ end }}
-
 <!-- Baidu Tongji -->
 {{ with .Site.Params.baidutongji }}
 <script>

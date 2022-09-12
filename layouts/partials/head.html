@@ -30,6 +30,11 @@
   {{ with .Site.GoogleAnalytics }}<link href="//www.google-analytics.com" rel="dns-prefetch">{{ end }}
   {{ with .Site.Params.baidutongji }}<link href="//hm.baidu.com" rel="dns-prefetch">{{ end }}
 
+<!-- Google Analytics -->
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}
+
   {{ if and (eq .Kind "page") (eq .Type "post") }}
 
   <!-- Page Author & Description -->
