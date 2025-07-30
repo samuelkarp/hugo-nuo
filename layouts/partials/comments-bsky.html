@@ -1,0 +1,88 @@
+{{/*
+The MIT License (MIT)
+
+Copyright (c) 2021 Kaushik Gopal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Derived from: https://github.com/kaushikgopal/henry-hugo/blob/b12809a77c7e680bd09f673ae474658e47d407a9/layouts/_partials/comments-bsky.html
+*/}}
+<div
+  id="comments-bsky"
+  data-bsky-uri="{{ .Params.bsky }}"
+  class="text-ht-lighter my-12"
+>
+  <div id="comment-post">
+    <h2 class="comment-post-header font-bold text-ht-light">
+      Comments via 🦋 <i class="fa-brands bluesky"></i>
+    </h2>
+
+    <div class="comment-post-meta mt-2 mb-10">
+      <a
+        class="comment-post-meta-actions decoration-ht-lightest"
+        href="#"
+        target="_blank"
+      >
+        <span id="likeCount">0</span> likes |
+        <span id="repostCount">0</span> reposts |
+        <span id="replyCount">0</span> replies
+      </a>
+      <br>
+      <a
+        id="comment-post-meta-reply"
+        class="block decoration-ht-lightest"
+        href="#"
+        target="_blank"
+      >
+        <b>Join the conversation</b>
+      </a>
+    </div>
+  </div>
+
+  <div id="comments-container"></div>
+
+  <template id="comment-template">
+    <div class="comment flex items-start space-x-4 my-8" style="display:flex">
+      <div class="bsky-avatar pt-2 none" style="width:100px; height:100px; flex:none; margin-right:1em">
+        <a class="avatar-link w-full" href="" target="_blank">
+          <img
+            class="avatar-img border border-hc rounded-full overflow-hidden object-cover"
+            src=""
+            alt="avatar"
+            style="width:100px; height:100px; border-radius:50%; overflow:hidden;"
+          />
+        </a>
+      </div>
+
+      <div class="comment-body">
+        <a class="author-link" href="#" target="_blank">
+          <b><span class="author-name" title=""></span></b>
+        </a>
+
+        <p class="comment-text"></p>
+
+        <div class="comment-actions mt-1 text-ht-lighter text-sm">
+          <a class="actions-link" href="#" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
+
+{{ $comments := resources.Get "scripts/comments-bsky.js" }}
+<script src="{{ $comments.RelPermalink }}"></script>
