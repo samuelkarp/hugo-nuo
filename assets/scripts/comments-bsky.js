@@ -192,6 +192,7 @@ function renderComment(comment) {
     const sortedReplies = comment.replies.sort(sortByLikes);
     const nestedRepliesContainer = document.createElement("div");
     nestedRepliesContainer.className = "comment nested-replies ml-14";
+    nestedRepliesContainer.style= "border-left: 1px";
 
     for (const reply of sortedReplies) {
       if (isThreadViewPost(reply)) {

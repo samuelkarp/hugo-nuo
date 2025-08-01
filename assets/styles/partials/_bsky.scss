@@ -1,0 +1,31 @@
+.flex {
+    display: flex
+}
+
+.bsky-avatar {
+    width:100px;
+    height:100px;
+    flex:none;
+    margin:1em
+}
+
+.nested-replies {
+    margin-left: 2em;
+}
+
+.avatar-img {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+.comment {
+    margin-top: 1em;
+    border-left: 1px black dotted;
+}
+
+.comment-body {
+    margin-bottom: 1em;
+    border-bottom: 1px black dotted;
+}
