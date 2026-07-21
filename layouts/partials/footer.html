@@ -11,7 +11,8 @@
 </footer>
 
 <!-- Smooth Scroll -->
-<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+{{ $smoothScroll := resources.Get "scripts/vendor/smooth-scroll.min.js" | fingerprint "sha384" }}
+<script src="{{ $smoothScroll.RelPermalink }}" integrity="{{ $smoothScroll.Data.Integrity }}"></script>
 
 <!-- Main Scripts -->
 <script src="{{ $script.RelPermalink }}"></script>

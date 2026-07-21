@@ -15,8 +15,6 @@
 {{- $fontAwesome := "https://use.fontawesome.com/releases/v5.8.1/css/all.css" -}}
 {{- $fontAwesomeIntegrity := "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" -}}
   <!-- DNS Prefetch -->
-  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
-  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
   {{ with .Site.Params.fontAwesome }}
   <link href="//use.fontawesome.com" rel="dns-prefetch">
   {{ else }}
@@ -148,5 +146,6 @@
 
 <!-- Medium Zoom -->
 {{ if and (eq .Kind "page") (eq .Type "post") }}
-<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+{{ $mediumZoom := resources.Get "scripts/vendor/medium-zoom.min.js" | fingerprint "sha384" }}
+<script src="{{ $mediumZoom.RelPermalink }}" integrity="{{ $mediumZoom.Data.Integrity }}"></script>
 {{ end }}
