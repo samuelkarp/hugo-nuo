@@ -12,16 +12,11 @@
 {{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
 {{- $style := resources.Get "styles/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS | resources.Minify -}}
 {{- $customStyle := resources.Get (.Site.Params.customStyle | default "styles/custom.scss") | resources.ToCSS | resources.Minify -}}
-{{- $fontAwesome := "https://use.fontawesome.com/releases/v5.8.1/css/all.css" -}}
-{{- $fontAwesomeIntegrity := "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" -}}
+{{- $lobster := resources.Get "fonts/lobster-v20.woff2" | fingerprint -}}
   <!-- DNS Prefetch -->
-  {{ with .Site.Params.fontAwesome }}
-  <link href="//use.fontawesome.com" rel="dns-prefetch">
-  {{ else }}
+  {{ if not .Site.Params.fontAwesome }}
   <link href="//at.alicdn.com" rel="dns-prefetch">
   {{ end }}
-  <link href="//fonts.googleapis.com" rel="dns-prefetch">
-  <link href="//fonts.gstatic.com" rel="dns-prefetch">
   {{ with .Site.DisqusShortname }}<link href="///disqus.com" rel="dns-prefetch">{{ end }}
   {{ with .Site.DisqusShortname }}<link href="//c.disquscdn.com" rel="dns-prefetch">{{ end }}
   {{ with .Site.Params.Gitment }}<link href="//imsun.github.io" rel="dns-prefetch">{{ end }}
@@ -125,9 +120,8 @@
 
 <!-- Preload -->
 <link rel="preload" href="{{ $style.RelPermalink }}" as="style">
-<!-- FontAwesome is not preloaded because we use integrity and https://bugs.chromium.org/p/chromium/issues/detail?id=677022  -->
 {{ with .Site.Params.customStyle }}<link rel="preload" href="{{ $customStyle.RelPermalink }}" as="style">{{ end }}
-<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="{{ $lobster.RelPermalink }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ $avatar.RelPermalink }}" as="image">
 <link rel="preload" href="{{ $bg.RelPermalink }}" as="image">
 
@@ -139,10 +133,9 @@
 </style>
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 {{ with .Site.Params.fontAwesome }}
-<link rel="stylesheet" href="{{ $fontAwesome }}" {{ printf "integrity=%q" $fontAwesomeIntegrity | safeHTMLAttr }} crossorigin="anonymous">
+<link rel="stylesheet" href="{{ "fontawesome/css/all.min.css" | relURL }}">
 {{ end }}
 {{ with .Site.Params.customStyle }}<link rel="stylesheet" href="{{ $customStyle.RelPermalink }}">{{ end }}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
 
 <!-- Medium Zoom -->
 {{ if and (eq .Kind "page") (eq .Type "post") }}
