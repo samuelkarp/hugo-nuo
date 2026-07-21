@@ -13,11 +13,6 @@
 <!-- Smooth Scroll -->
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
 
-<!-- Video.js for post -->
-{{ if and (eq .Kind "page") (eq .Type "post") }}
-<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
-{{ end }}
-
 <!-- Main Scripts -->
 <script src="{{ $script.RelPermalink }}"></script>
 
