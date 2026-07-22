@@ -7,7 +7,6 @@
 {{- $icon144 := "icons/icon-144x144.png" -}}
 {{- $icon152 := "icons/icon-152x152.png" -}}
 {{- $icon192 := "icons/icon-192x192.png" -}}
-{{- $manifest := "manifest.json" -}}
 {{- $bg := resources.Get (.Site.Params.bg | default "images/grey-prism.svg") -}}
 {{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
 {{- $style := resources.Get "styles/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS | resources.Minify -}}
@@ -116,7 +115,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ $icon32 | relURL }}">
 <link rel="icon" sizes="192x192" href="{{ $icon192 | relURL }}">
 <link rel="apple-touch-icon" href="{{ $icon152 | relURL }}">
-<link rel="manifest" href="{{ $manifest | relURL }}">
 
 <!-- Preload -->
 <link rel="preload" href="{{ $style.RelPermalink }}" as="style">
