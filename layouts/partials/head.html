@@ -36,13 +36,13 @@
   <!-- Twitter Card -->
   {{ if isset .Params "cover" }}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ .Site.Params.twitter | default $gohugoio }}">
+    {{ with .Site.Params.twitter }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:description" content="{{ .Summary | plainify }}">
     <meta name="twitter:image" content="{{ .Params.cover | absURL }}">
   {{ else }}
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@{{ .Site.Params.twitter | default $gohugoio }}">
+    {{ with .Site.Params.twitter }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:description" content="{{ .Summary | plainify }}">
     <meta name="twitter:image" content="{{ $avatar.Permalink }}">
@@ -63,7 +63,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@{{ .Site.Params.twitter | default $gohugoio }}">
+  {{ with .Site.Params.twitter }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
   <meta name="twitter:title" content="{{ if isset .Site.Params "seotitle" }}{{ .Site.Params.seotitle }}{{ else }}{{ .Site.Title }}{{ end }}">
   {{ with .Site.Params.description }}<meta name="twitter:description" content="{{ . }}">{{ end }}
   <meta name="twitter:image" content="{{ $avatar.Permalink }}">

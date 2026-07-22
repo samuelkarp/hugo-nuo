@@ -35,6 +35,7 @@
       {{- $emailIcon := "icon icon-email" -}}
       {{- $githubIcon := "icon icon-github" -}}
       {{- $twitterIcon := "icon icon-twitter" -}}
+      {{- $blueskyIcon := "fab fa-bluesky" -}}
       {{- $facebookIcon := "icon icon-facebook" -}}
       {{- $googleIcon := "icon icon-google" -}}
       {{- $instagramIcon := "icon icon-instagram" -}}
@@ -104,10 +105,10 @@
         </li>
       {{- end -}}
 
-      {{- with .Site.Params.twitter -}}
+      {{- with .Site.Params.bluesky -}}
         <li class="social-item">
-          <a href="//twitter.com/{{ . }}" rel="me" title="Twitter" aria-label="Twitter">
-            <span class="{{ $twitterIcon }}" aria-hidden="true"></span>
+          <a href="//bsky.app/profile/{{ . }}" rel="me" title="Bluesky" aria-label="Bluesky">
+            <span class="{{ $blueskyIcon }}" aria-hidden="true"></span>
           </a>
         </li>
       {{- end -}}
