@@ -99,24 +99,29 @@ a {
 }
 
 .site-footer {
-  display: none;
+  box-sizing: border-box;
+  margin-left: 20rem;
+  width: calc(100% - 20rem);
+  max-width: 70rem;
+  padding: 2rem;
+  text-align: center;
+  color: $text;
+  font-family: $family-monospace;
+  font-size: $size-7;
 
-  @media screen and (max-width: $tablet) {
-    display: block;
-    padding: 2rem 1rem;
-    text-align: center;
+  & a {
+    opacity: 0.7;
     color: $text;
-    font-family: $family-monospace;
-    font-size: $size-7;
 
-    & a {
-      opacity: 0.7;
-      color: $text;
-
-      &:focus,
-      &:hover {
-        opacity: 1;
-      }
+    &:focus,
+    &:hover {
+      opacity: 1;
     }
+  }
+
+  @media print, screen and (max-width: $tablet) {
+    margin-left: 0;
+    width: 100%;
+    padding: 2rem 1rem;
   }
 }
